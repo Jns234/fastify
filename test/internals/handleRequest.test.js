@@ -140,7 +140,7 @@ test('request should be defined in onSend Hook on post request with content type
     reply.send(200)
   })
   fastify.listen({ port: 0 }, err => {
-    fastify.server.unref()
+    t.teardown(() => { fastify.close() })
     t.error(err)
     sget({
       method: 'POST',
@@ -171,7 +171,7 @@ test('request should be defined in onSend Hook on post request with content type
     reply.send(200)
   })
   fastify.listen({ port: 0 }, err => {
-    fastify.server.unref()
+    t.teardown(() => { fastify.close() })
     t.error(err)
     sget({
       method: 'POST',
@@ -202,7 +202,7 @@ test('request should be defined in onSend Hook on options request with content t
     reply.send(200)
   })
   fastify.listen({ port: 0 }, err => {
-    fastify.server.unref()
+    t.teardown(() => { fastify.close() })
     t.error(err)
     sget({
       method: 'OPTIONS',
